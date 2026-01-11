@@ -12,5 +12,18 @@ Create Payment, Authorize, Capture, Refund, View Transaction, Basic Fraud Rule
 - auth-service (JWT)
 - message-bus (Kafka)
 
-## Non-goals (v1): PCI, real card storage, real money movement
+**Non-goals** (v1): PCI, real card storage, real money movement
+
+## Architecture Diagram
+```mermaid
+flowchart LR
+  UI[React UI] -->|HTTPS| GW[Gateway Service]
+  GW --> PAY[Payment Service]
+  GW --> AUTH[Auth Service]
+  PAY -->|events| MQ[(RabbitMQ)]
+  MQ --> LED[Ledger Service]
+  LED --> PG2[(Ledger DB)]
+  PAY --> PG1[(Payments DB)]
+```
+
 
