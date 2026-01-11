@@ -25,5 +25,13 @@ flowchart LR
   LED --> PG2[(Ledger DB)]
   PAY --> PG1[(Payments DB)]
 ```
+## MVP Flow # 1: Create Payment
+- Client calls POST /api/payments
+- Gateway forwards to payment-service
+- payment-service validates + creates payment with status CREATED
+- payment-service returns {paymentId, status}
+- (later) payment-service publishes PAYMENT_CREATED event
+- (later) ledger-service consumes and writes ledger entry
+
 
 
