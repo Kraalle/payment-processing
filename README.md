@@ -10,9 +10,9 @@ Create Payment, Authorize, Capture, Refund, View Transaction, Basic Fraud Rule
 - payment-service (payment state machine + idempotency)
 - ledger-service (append-only ledger, consumes events)
 - auth-service (JWT)
-- message-bus (Kafka)
+- message-bus (RabbitMQ)
 
-**Non-goals** (v1): PCI, real card storage, real money movement
+**Non-goals** (v1): PCI, real card storage, real money movement, no synchronous service-to-service business coupling (prefer async events)
 
 ## Architecture Diagram
 ```mermaid
@@ -32,6 +32,19 @@ flowchart LR
 - payment-service returns {paymentId, status}
 - (later) payment-service publishes PAYMENT_CREATED event
 - (later) ledger-service consumes and writes ledger entry
+
+## Next build step:
+- Boot payment-service (Spring Boot + Gradle)
+- Add POST /payments
+- Persist to Postgres (Docker compose)
+- Return paymentId + status
+  
+## Payment Service - Phase 1
+- Spring Boot (Gradle)
+- Payment entity
+- JPA repository
+- POST /payments
+- Dockerized Postgres
 
 
 
