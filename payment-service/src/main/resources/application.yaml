@@ -8,5 +8,6 @@ spring:
     password: payments
 
   jpa:
+    open-in-view: false
     hibernate:
-      ddl-auto: update
+      ddl-auto: validate
