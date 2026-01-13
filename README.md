@@ -46,5 +46,14 @@ flowchart LR
 - POST /payments
 - Dockerized Postgres
 
+## 01/11/2026 Tasks:
+- Generate Spring Boot using Gradle + Java 17 (done)
+- Create docker-compose.yml with Postgres service (done)
+- Wire Spring Boot to Postgres (done)
+
+## 01/12/2026 Tasks:
+- Design Payment entity (fields + constraints)
+- Create repository interface
+
 
 
